@@ -175,9 +175,9 @@ const bRows = computed(() => chunk(bItems, 2));
 .extras h2{font-size:16px;margin:0 0 8px;color:#fff;}
 .extras ul{margin:0;padding-left:18px;color:#fff;}
 
-.sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;}
+.sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;width:260px;}
 @media (max-width: 640px){
-  .sidebar{position:static;padding:0;background:transparent;backdrop-filter:none;}
+  .sidebar{position:static;padding:0;background:transparent;backdrop-filter:none;width:100%;max-width:320px;margin:0 auto;}
   .main{margin-top:0;}
 }
 .profile-card{
@@ -189,10 +189,13 @@ const bRows = computed(() => chunk(bItems, 2));
   display:flex;
   gap:12px;
   align-items:center;
+  width:100%;
+  box-sizing:border-box;
 }
 .avatar{width:64px;height:64px;border-radius:12px;object-fit:cover;}
+.profile-text{flex:1;min-width:0;}
 .profile-text .name{font-size:18px;font-weight:700;margin-bottom:6px;color:#fff;}
-.signature{font-weight:700;font-size:14px;color:#fff;min-height:22px;}
+.signature{font-weight:700;font-size:14px;color:#fff;min-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .cursor{margin-left:2px;animation:blink 1s infinite;}
 
 .side-btn{
@@ -204,6 +207,8 @@ const bRows = computed(() => chunk(bItems, 2));
   color:#fff;
   text-decoration:none;
   font-weight:600;
+  width:100%;
+  box-sizing:border-box;
 }
 .side-btn:hover{background:#0b1220;}
 
