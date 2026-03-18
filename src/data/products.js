@@ -1,3 +1,4 @@
+// 商品与卡片数据（内容在此修改）
 export const sections = {
   A: [
     {
