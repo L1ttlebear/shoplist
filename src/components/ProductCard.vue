@@ -30,26 +30,28 @@ defineProps({ p: Object });
 <style scoped>
 .card{
   border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:16px;
-  box-shadow:0 2px 10px rgba(0,0,0,.04);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 4px 16px rgba(0,0,0,.06);
   background:#fff;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:10px;
 }
 .card.section{
   justify-content:center;
   align-items:center;
-  min-height:80px;
+  min-height:110px;
+  font-size:20px;
 }
-.title{font-size:16px;font-weight:600;}
-.list{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#374151;}
-.note,.remark{color:#6b7280;font-size:12px;}
+.title{font-size:18px;font-weight:700;}
+.list{display:flex;flex-direction:column;gap:8px;font-size:15px;color:#111827;}
+.list b{font-weight:700;}
+.note,.remark{color:#6b7280;font-size:13px;}
 .btn{
-  margin-top:6px;
+  margin-top:8px;
   background:#111827;color:#fff;text-align:center;
-  padding:8px 10px;border-radius:8px;text-decoration:none;font-size:14px;
+  padding:10px 12px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:600;
 }
 .btn:hover{background:#0f172a;}
 </style>
