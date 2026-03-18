@@ -1,10 +1,13 @@
 <template>
-  <div class="card">
+  <div class="card" :class="{ section: p.type === 'section' }">
     <div class="title">
       <strong>{{ p.name }}</strong>
     </div>
 
-    <div class="list">
+    <div v-if="p.type !== 'section'" class="list">
+      <div v-if="p.preVendors"><b>前置可通厂商</b>：{{ p.preVendors }}</div>
+      <div v-if="p.cpu"><b>CPU</b>：{{ p.cpu }}</div>
+      <div v-if="p.plan"><b>套餐</b>：{{ p.plan }}</div>
       <div><b>流量(双向)</b>：{{ p.traffic }}</div>
       <div><b>带宽</b>：{{ p.bandwidth }}</div>
       <div v-if="p.priceMonthly"><b>价格(月付)</b>：¥{{ p.priceMonthly }}</div>
@@ -16,7 +19,7 @@
     <div class="note" v-if="p.note">* {{ p.note }}</div>
     <div class="remark" v-if="p.remark">* {{ p.remark }}</div>
 
-    <a class="btn" :href="p.contact" target="_blank">联系我</a>
+    <a v-if="p.type !== 'section'" class="btn" :href="p.contact" target="_blank">联系我</a>
   </div>
 </template>
 
@@ -34,6 +37,11 @@ defineProps({ p: Object });
   display:flex;
   flex-direction:column;
   gap:8px;
+}
+.card.section{
+  justify-content:center;
+  align-items:center;
+  min-height:80px;
 }
 .title{font-size:16px;font-weight:600;}
 .list{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#374151;}

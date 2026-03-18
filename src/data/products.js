@@ -1,6 +1,13 @@
 export const products = [
   {
-    name: "A车 Gold 6248 Plan 1",
+    type: "section",
+    name: "A车"
+  },
+  {
+    name: "ix杜甫拼车",
+    preVendors: "阿里 / 腾讯 / 百度 / 火山",
+    cpu: "Gold 6248",
+    plan: "Plan 1",
     traffic: "500G 双向",
     bandwidth: "1 Gbps",
     priceMonthly: 162,
@@ -11,7 +18,10 @@ export const products = [
     contact: "https://t.me/your_username"
   },
   {
-    name: "A车 Gold 6248 Plan 2",
+    name: "ix杜甫拼车",
+    preVendors: "阿里 / 腾讯 / 百度 / 火山",
+    cpu: "Gold 6248",
+    plan: "Plan 2",
     traffic: "1T 双向",
     bandwidth: "1 Gbps",
     priceMonthly: 240,
