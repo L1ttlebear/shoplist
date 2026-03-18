@@ -35,7 +35,11 @@
       <div v-if="p.ports !== undefined"><b>端口:</b> {{ p.ports }}</div>
 
       <div v-if="p.stock" class="stock-box">
-        <div class="stock-title"><b>库存:</b> 已拼 / 总量 / 剩余车位</div>
+        <div class="stock-title">
+          <span><b>已拼</b></span>
+          <span><b>总量</b></span>
+          <span><b>剩余车位</b></span>
+        </div>
         <div class="stock-grid">
           <span>{{ (p.stock || '').split('/')[0] }}</span>
           <span>{{ (p.stock || '').split('/')[1] }}</span>
@@ -130,13 +134,36 @@ defineProps({ p: Object });
   padding:8px 10px;
   background:#fafafa;
 }
-.stock-title{font-size:12.5px;color:#374151;margin-bottom:6px;}
+.stock-title{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  text-align:center;
+  font-size:12.5px;
+  color:#374151;
+  padding-bottom:6px;
+  border-bottom:1px solid #e5e7eb;
+}
+.stock-title span{
+  position:relative;
+}
+.stock-title span:not(:last-child)::after{
+  content:"";
+  position:absolute;
+  right:0;
+  top:2px;
+  bottom:2px;
+  width:1px;
+  background:#e5e7eb;
+}
 .stock-grid{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:6px;
   text-align:center;
   font-weight:700;
+  padding-top:6px;
+}
+.stock-grid span:not(:last-child){
+  border-right:1px solid #e5e7eb;
 }
 .note,.remark{color:#6b7280;font-size:12px;}
 .btn{
