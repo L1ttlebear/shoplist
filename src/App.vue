@@ -52,7 +52,7 @@ import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import { sections } from "./data/products";
 import ProductCard from "./components/ProductCard.vue";
 
-const avatarUrl = "https://example.com/avatar.jpg"; // 头像远程链接（内容在此修改）
+const avatarUrl = "https://img.ezov.de/uploads/2026/03/n1N2l8Ek4bas.webp"; // 头像远程链接（内容在此修改）
 
 const signatures = [
   "快来拼车吧,少年~",
@@ -112,7 +112,7 @@ const bRows = computed(() => chunk(bItems, 2));
 
 <style scoped>
 :global(body){
-  background:url('https://img.ezov.de/uploads/2026/03/GwO0r_-FDgMx.webp') center/cover fixed no-repeat;
+  background:url('https://img.ezov.de/uploads/2026/03/sItZmWb3CAfe.webp') center/cover fixed no-repeat;
 }
 .page{max-width:1500px;margin:24px auto;padding:0 16px;}
 .page h1{ text-align:center; margin-bottom:16px; }
