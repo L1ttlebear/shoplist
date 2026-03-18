@@ -43,25 +43,40 @@ defineProps({ p: Object });
 .card{
   border:1px solid #e5e7eb;
   border-radius:14px;
-  padding:20px;
+  padding:14px 16px;
   box-shadow:0 4px 16px rgba(0,0,0,.06);
   background:#fff;
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:8px;
 }
 .card.section{
-  min-height:140px;
+  min-height:0;
 }
-.sub{margin-left:8px;color:#374151;}
-.title{font-size:18px;font-weight:700;}
-.list{display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5;color:#111827;}
-.list b{font-weight:700;min-width:84px;display:inline-block;}
+.title{
+  font-size:17px;
+  font-weight:700;
+  text-align:center;
+}
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  font-size:13px;
+  line-height:1.45;
+  color:#111827;
+}
+.list b{
+  font-weight:700;
+  min-width:90px;
+  display:inline-block;
+}
+.sub{margin-left:8px;color:#374151;font-size:12.5px;}
 .note,.remark{color:#6b7280;font-size:12px;}
 .btn{
-  margin-top:8px;
+  margin-top:6px;
   background:#111827;color:#fff;text-align:center;
-  padding:10px 12px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:600;
+  padding:8px 10px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:600;
 }
 .btn:hover{background:#0f172a;}
 </style>
