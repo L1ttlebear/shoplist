@@ -9,11 +9,11 @@ export const STYLE_SRC_CONFIG = {
   ],
   links: [
     {
-      label: "nodeseek - 主页",
+      label: "NodeSeek - 主页",
       url: "https://www.nodeseek.com/space/41701#/general"
     },
     {
-      label: "nodeseek - PM",
+      label: "NodeSeek - PM",
       url: "https://www.nodeseek.com/notification#/message?mode=talk&to=41701"
     },
     {
