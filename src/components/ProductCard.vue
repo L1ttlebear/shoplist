@@ -51,11 +51,17 @@ defineProps({ p: Object });
   gap:10px;
 }
 .card.section{
-  min-height:110px;
+  min-height:170px;
+  justify-content:center;
+  align-items:center;
+}
+.card.section .title{
+  margin-bottom:10px;
 }
 .card.section .list{
   align-items:center;
   text-align:center;
+  margin-top:6px;
 }
 .card.section .list b{
   min-width:auto;
