@@ -30,9 +30,22 @@
       <div v-if="p.traffic"><b>流量(双向):</b> {{ p.traffic }}</div>
       <div v-if="p.bandwidth"><b>带宽:</b> {{ p.bandwidth }}</div>
       <div v-if="p.priceMonthly"><b>价格(月付):</b> {{ p.priceMonthly }} CNY</div>
-      <div v-if="p.priceQuarter2"><b>价格(季付):</b> {{ p.priceQuarter2 }}</div>
-      <div v-if="p.priceQuarter4"><b>价格(季付):</b> {{ p.priceQuarter4 }}</div>
-      <div v-if="p.ports !== undefined"><b>端口:</b> {{ p.ports }}</div>
+
+      <div v-if="p.priceQuarter2 || p.priceQuarter4" class="price-box">
+        <div class="price-title"><b>价格(季度付款)</b></div>
+        <div class="price-grid">
+          <div class="price-col">
+            <div class="price-label">任意两区域</div>
+            <div class="price-value">{{ p.priceQuarter2 }}</div>
+          </div>
+          <div class="price-col">
+            <div class="price-label">四区域全</div>
+            <div class="price-value">{{ p.priceQuarter4 }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div v-if="p.ports !== undefined" class="port-box"><b>端口:</b> {{ p.ports }}</div>
 
       <div v-if="p.stock" class="stock-box">
         <div class="stock-title">
@@ -164,6 +177,39 @@ defineProps({ p: Object });
 }
 .stock-grid span:not(:last-child){
   border-right:1px solid #e5e7eb;
+}
+.price-box{
+  margin-top:6px;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:8px 10px;
+  background:#fafafa;
+}
+.price-title{
+  text-align:center;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.price-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  text-align:center;
+}
+.price-col{
+  padding:4px 0;
+}
+.price-col:not(:last-child){
+  border-right:1px solid #e5e7eb;
+}
+.price-label{font-size:12.5px;color:#374151;font-weight:700;}
+.price-value{font-size:13.5px;font-weight:700;}
+.port-box{
+  margin-top:6px;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:6px 10px;
+  background:#fafafa;
+  font-weight:700;
 }
 .note,.remark{color:#6b7280;font-size:12px;}
 .btn{
