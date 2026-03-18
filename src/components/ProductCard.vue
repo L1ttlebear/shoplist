@@ -1,6 +1,6 @@
 <template>
   <div class="card" :class="{ section: p.type === 'section' }">
-    <div class="title">
+    <div class="title" :class="{ center: p.type === 'section' }">
       <strong>{{ p.name }}</strong>
     </div>
 
@@ -43,40 +43,43 @@ defineProps({ p: Object });
 .card{
   border:1px solid #e5e7eb;
   border-radius:14px;
-  padding:14px 16px;
+  padding:20px;
   box-shadow:0 4px 16px rgba(0,0,0,.06);
   background:#fff;
   display:flex;
   flex-direction:column;
-  gap:8px;
+  gap:10px;
 }
 .card.section{
-  min-height:0;
+  min-height:110px;
 }
 .title{
-  font-size:17px;
+  font-size:18px;
   font-weight:700;
+  text-align:left;
+}
+.title.center{
   text-align:center;
 }
 .list{
   display:flex;
   flex-direction:column;
-  gap:4px;
-  font-size:13px;
-  line-height:1.45;
+  gap:6px;
+  font-size:14px;
+  line-height:1.6;
   color:#111827;
 }
 .list b{
   font-weight:700;
-  min-width:90px;
+  min-width:92px;
   display:inline-block;
 }
-.sub{margin-left:8px;color:#374151;font-size:12.5px;}
+.sub{margin-left:8px;color:#374151;font-size:13px;}
 .note,.remark{color:#6b7280;font-size:12px;}
 .btn{
-  margin-top:6px;
+  margin-top:8px;
   background:#111827;color:#fff;text-align:center;
-  padding:8px 10px;border-radius:10px;text-decoration:none;font-size:14px;font-weight:600;
+  padding:10px 12px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:600;
 }
 .btn:hover{background:#0f172a;}
 </style>
