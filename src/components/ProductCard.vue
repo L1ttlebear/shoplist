@@ -12,8 +12,7 @@
         <div v-if="p.discount"><b>优惠</b>：{{ p.discount }}</div>
       </div>
 
-      <div class="inner-box" v-if="p.payCycle && p.latency && p.latency.length">
-        <div><b>付款周期</b>：{{ p.payCycle }}</div>
+      <div class="inner-box" v-if="p.latency && p.latency.length">
         <div class="latency">
           <div><b>延迟列表</b>：</div>
           <div class="latency-list">
