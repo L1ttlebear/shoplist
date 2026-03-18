@@ -10,7 +10,7 @@ export const sections = {
     },
     {
       name: "ix杜甫拼车",
-      preVendors: "阿里 / 腾讯 / 百度 / 火山",
+      preVendors: "阿里 / 百度 / 火山",
       cpu: "Gold 6248",
       plan: "Plan 1",
       traffic: "500G 双向",
@@ -24,7 +24,7 @@ export const sections = {
     },
     {
       name: "ix杜甫拼车",
-      preVendors: "阿里 / 腾讯 / 百度 / 火山",
+      preVendors: "阿里 / 百度 / 火山",
       cpu: "Gold 6248",
       plan: "Plan 2",
       traffic: "1T 双向",
