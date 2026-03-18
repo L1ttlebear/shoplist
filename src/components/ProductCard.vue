@@ -79,11 +79,14 @@ defineProps({ p: Object });
 
 <style scoped>
 .card{
-  border:1px solid #e5e7eb;
+  border:1px solid rgba(255,255,255,.25);
   border-radius:14px;
   padding:20px;
-  box-shadow:0 4px 16px rgba(0,0,0,.06);
-  background:#fff;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+  background:rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color:#fff;
   display:flex;
   flex-direction:column;
   gap:10px;
@@ -105,6 +108,7 @@ defineProps({ p: Object });
   font-size:18px;
   font-weight:700;
   text-align:left;
+  color:#fff;
 }
 .title.center{
   text-align:center;
@@ -120,30 +124,27 @@ defineProps({ p: Object });
 }
 .inner-box{
   width:90%;
-  border:1px solid #e5e7eb;
+  border:1px solid rgba(255,255,255,.2);
   border-radius:10px;
   padding:10px 12px;
-  background:#fafafa;
+  background:rgba(0,0,0,.45);
   text-align:left;
   line-height:1.6;
+  color:#fff;
 }
 .inner-box b{
   min-width:96px;
   display:inline-block;
 }
-.latency{
-  margin-top:6px;
-}
-.latency-list{
-  margin-left:12px;
-}
+.latency{margin-top:6px;}
+.latency-list{margin-left:12px;}
 .list{
   display:flex;
   flex-direction:column;
   gap:6px;
   font-size:14px;
   line-height:1.6;
-  color:#111827;
+  color:#fff;
 }
 .list b{
   font-weight:700;
@@ -152,23 +153,21 @@ defineProps({ p: Object });
 }
 .stock-box{
   margin-top:6px;
-  border:1px solid #e5e7eb;
+  border:1px solid rgba(255,255,255,.2);
   border-radius:10px;
   padding:8px 10px;
-  background:#fafafa;
+  background:rgba(0,0,0,.45);
 }
 .stock-title{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   text-align:center;
   font-size:12.5px;
-  color:#374151;
+  color:#fff;
   padding-bottom:6px;
-  border-bottom:1px solid #e5e7eb;
+  border-bottom:1px solid rgba(255,255,255,.2);
 }
-.stock-title span{
-  position:relative;
-}
+.stock-title span{position:relative;}
 .stock-title span:not(:last-child)::after{
   content:"";
   position:absolute;
@@ -176,7 +175,7 @@ defineProps({ p: Object });
   top:2px;
   bottom:2px;
   width:1px;
-  background:#e5e7eb;
+  background:rgba(255,255,255,.2);
 }
 .stock-grid{
   display:grid;
@@ -184,19 +183,19 @@ defineProps({ p: Object });
   text-align:center;
   font-weight:700;
   padding-top:6px;
+  color:#fff;
 }
 .stock-grid span:not(:last-child){
-  border-right:1px solid #e5e7eb;
+  border-right:1px solid rgba(255,255,255,.2);
 }
-.stock-left{
-  color:#b35220;
-}
+.stock-left{color:#b35220;}
 .price-box{
   margin-top:6px;
-  border:1px solid #e5e7eb;
+  border:1px solid rgba(255,255,255,.2);
   border-radius:10px;
   padding:8px 10px;
-  background:#fafafa;
+  background:rgba(0,0,0,.45);
+  color:#fff;
 }
 .price-title{
   text-align:center;
@@ -208,24 +207,29 @@ defineProps({ p: Object });
   grid-template-columns:repeat(2, 1fr);
   text-align:center;
 }
-.price-col{
-  padding:4px 0;
-}
+.price-col{padding:4px 0;}
 .price-col:not(:last-child){
-  border-right:1px solid #e5e7eb;
+  border-right:1px solid rgba(255,255,255,.2);
 }
-.price-label{font-size:12.5px;color:#374151;font-weight:700;}
+.price-label{font-size:12.5px;color:#fff;font-weight:700;}
 .price-value{font-size:13.5px;font-weight:700;}
 .price-single{
   text-align:center;
   font-size:14px;
   font-weight:700;
 }
-.note,.remark{color:#6b7280;font-size:12px;}
+.note,.remark{color:rgba(255,255,255,.8);font-size:12px;}
 .btn{
   margin-top:8px;
-  background:#111827;color:#fff;text-align:center;
-  padding:10px 12px;border-radius:10px;text-decoration:none;font-size:15px;font-weight:600;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  text-align:center;
+  padding:10px 12px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:600;
+  border:1px solid rgba(255,255,255,.2);
 }
-.btn:hover{background:#0f172a;}
+.btn:hover{background:rgba(0,0,0,.9);}
 </style>
