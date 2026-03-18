@@ -144,7 +144,9 @@ const bRows = computed(() => chunk(bItems, 2));
   .layout{grid-template-columns:1fr;}
 }
 @media (max-width: 640px){
-  .layout{grid-template-columns:1fr;}
+  .layout{display:flex;flex-direction:column;gap:16px;}
+  .sidebar{order:1;}
+  .main{order:2;}
 }
 
 .main{}
