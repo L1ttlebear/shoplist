@@ -106,8 +106,11 @@ const bRows = computed(() => chunk(bItems, 2));
 </script>
 
 <style scoped>
+:global(html, body){
+  min-height:100%;
+}
 :global(body){
-  background:url(v-bind(backgroundUrl)) center/cover fixed no-repeat;
+  background:url(v-bind(backgroundUrl)) center/cover no-repeat fixed;
 }
 @media (max-width: 640px){
   :global(body){
