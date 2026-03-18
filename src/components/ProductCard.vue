@@ -97,6 +97,10 @@ defineProps({ p: Object });
   margin-bottom:12px;
   align-self:stretch;
 }
+.card.section .section-center{
+  flex:1;
+  justify-content:center;
+}
 .title{
   font-size:18px;
   font-weight:700;
