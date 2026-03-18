@@ -143,7 +143,6 @@ const bRows = computed(() => chunk(bItems, 2));
 }
 @media (max-width: 640px){
   .layout{grid-template-columns:1fr;}
-  .sidebar{order:-1;margin-bottom:10px;}
 }
 
 .main{}
@@ -174,8 +173,8 @@ const bRows = computed(() => chunk(bItems, 2));
 
 .sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;}
 @media (max-width: 640px){
-  .sidebar{position:fixed;top:0;left:0;right:0;z-index:50;padding:12px 16px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);}
-  .main{margin-top:240px;}
+  .sidebar{position:fixed;top:12px;left:12px;right:12px;z-index:50;padding:12px 12px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);}
+  .main{margin-top:260px;}
 }
 .profile-card{
   border:1px solid #111827;
