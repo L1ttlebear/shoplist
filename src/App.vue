@@ -173,8 +173,8 @@ const bRows = computed(() => chunk(bItems, 2));
 
 .sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;}
 @media (max-width: 640px){
-  .sidebar{position:fixed;top:12px;left:12px;right:12px;z-index:50;padding:12px 12px;background:rgba(0,0,0,.35);backdrop-filter:blur(8px);}
-  .main{margin-top:260px;}
+  .sidebar{position:static;padding:0;background:transparent;backdrop-filter:none;}
+  .main{margin-top:0;}
 }
 .profile-card{
   border:1px solid #111827;
