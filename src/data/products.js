@@ -2,7 +2,7 @@ export const sections = {
   A: [
     {
       type: "section",
-      name: "A车: ix深港杜甫",
+      name: "ix深港杜甫",
       datacenter: "前海 Internet Exchange Point",
       payCycle: "最低季付起拼，月付仅为参考价格",
       discount: "年付 9 折优惠"

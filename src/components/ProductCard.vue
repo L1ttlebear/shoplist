@@ -20,7 +20,7 @@
 
       <div v-if="p.traffic"><b>流量(双向)</b>：{{ p.traffic }}</div>
       <div v-if="p.bandwidth"><b>带宽</b>：{{ p.bandwidth }}</div>
-      <div v-if="p.priceMonthly"><b>价格(月付)</b>：¥{{ p.priceMonthly }}</div>
+      <div v-if="p.priceMonthly"><b>价格(月付)</b>：{{ p.priceMonthly }} CNY</div>
       <div v-if="p.priceQuarter2"><b>价格(季付)</b>：{{ p.priceQuarter2 }}</div>
       <div v-if="p.priceQuarter4"><b>价格(季付)</b>：{{ p.priceQuarter4 }}</div>
       <div v-if="p.ports !== undefined"><b>端口</b>：{{ p.ports }}</div>
@@ -55,9 +55,9 @@ defineProps({ p: Object });
 }
 .sub{margin-left:8px;color:#374151;}
 .title{font-size:18px;font-weight:700;}
-.list{display:flex;flex-direction:column;gap:8px;font-size:15px;color:#111827;}
-.list b{font-weight:700;}
-.note,.remark{color:#6b7280;font-size:13px;}
+.list{display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5;color:#111827;}
+.list b{font-weight:700;min-width:84px;display:inline-block;}
+.note,.remark{color:#6b7280;font-size:12px;}
 .btn{
   margin-top:8px;
   background:#111827;color:#fff;text-align:center;
