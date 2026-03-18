@@ -1,5 +1,6 @@
 // style-src 配置（内容在此修改）
 export const STYLE_SRC_CONFIG = {
+  backgroundUrl: "https://img.ezov.de/uploads/2026/03/sItZmWb3CAfe.webp",
   avatarUrl: "https://img.ezov.de/uploads/2026/03/n1N2l8Ek4bas.webp",
   name: "NANA",
   signatures: [

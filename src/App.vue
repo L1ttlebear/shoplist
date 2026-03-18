@@ -53,7 +53,7 @@ import { sections } from "./data/products";
 import ProductCard from "./components/ProductCard.vue";
 import { STYLE_SRC_CONFIG } from "./style-src-config";
 
-const { avatarUrl, name, signatures, links } = STYLE_SRC_CONFIG;
+const { backgroundUrl, avatarUrl, name, signatures, links } = STYLE_SRC_CONFIG;
 
 const typedText = ref("");
 let sigIndex = 0;
@@ -107,7 +107,7 @@ const bRows = computed(() => chunk(bItems, 2));
 
 <style scoped>
 :global(body){
-  background:url('https://img.ezov.de/uploads/2026/03/sItZmWb3CAfe.webp') center/cover fixed no-repeat;
+  background:url(v-bind(backgroundUrl)) center/cover fixed no-repeat;
 }
 @media (max-width: 640px){
   :global(body){
