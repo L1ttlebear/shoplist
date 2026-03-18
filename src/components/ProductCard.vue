@@ -53,6 +53,14 @@ defineProps({ p: Object });
 .card.section{
   min-height:110px;
 }
+.card.section .list{
+  align-items:center;
+  text-align:center;
+}
+.card.section .list b{
+  min-width:auto;
+  display:inline;
+}
 .title{
   font-size:18px;
   font-weight:700;
