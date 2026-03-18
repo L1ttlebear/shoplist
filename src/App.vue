@@ -33,16 +33,14 @@
 
       <aside class="sidebar">
         <div class="profile-card">
-          <img class="avatar" :src="avatarUrl" alt="NANA" />
+          <img class="avatar" :src="avatarUrl" :alt="name" />
           <div class="profile-text">
-            <div class="name">NANA</div>
+            <div class="name">{{ name }}</div>
             <div class="signature"><span class="typing">{{ typedText }}</span><span class="cursor">|</span></div>
           </div>
         </div>
 
-        <a class="side-btn" href="https://www.nodeseek.com/space/41701#/general" target="_blank">nodeseek - 主页</a>
-        <a class="side-btn" href="https://www.nodeseek.com/notification#/message?mode=talk&to=41701" target="_blank">nodeseek - PM</a>
-        <a class="side-btn" href="https://t.me/MesNANA_bot" target="_blank">Telegram - Bot</a>
+        <a v-for="(l, i) in links" :key="i" class="side-btn" :href="l.url" target="_blank">{{ l.label }}</a>
       </aside>
 
     </div>
@@ -53,14 +51,9 @@
 import { computed, ref, onMounted, onBeforeUnmount } from "vue";
 import { sections } from "./data/products";
 import ProductCard from "./components/ProductCard.vue";
+import { STYLE_SRC_CONFIG } from "./style-src-config";
 
-const avatarUrl = "https://img.ezov.de/uploads/2026/03/n1N2l8Ek4bas.webp"; // 头像远程链接（内容在此修改）
-
-const signatures = [
-  "快来拼车吧,少年~",
-  "怎样才算好呢?好难抉择呀!",
-  "人没有梦想,和咸鱼有什么区别!!"
-];
+const { avatarUrl, name, signatures, links } = STYLE_SRC_CONFIG;
 
 const typedText = ref("");
 let sigIndex = 0;
