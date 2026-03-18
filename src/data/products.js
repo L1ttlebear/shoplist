@@ -20,7 +20,7 @@ export const sections = {
       stock: "27/40",
       delivery: "哆啦A梦",
       note: "最低只接受季付",
-      contact: "https://t.me/your_username"
+      contact: "https://t.me/MesNANA_bot"
     },
     {
       name: "ix杜甫拼车",
@@ -34,7 +34,7 @@ export const sections = {
       stock: "10/20",
       delivery: "哆啦A梦",
       note: "最低只接受季付",
-      contact: "https://t.me/your_username"
+      contact: "https://t.me/MesNANA_bot"
     }
   ],
   B: [
@@ -58,7 +58,7 @@ export const sections = {
       stock: "2/20",
       delivery: "哆啦A梦",
       note: "出口中转非落地",
-      contact: "https://t.me/your_username"
+      contact: "https://t.me/MesNANA_bot"
     },
     {
       name: "Akari-TW",
@@ -71,7 +71,7 @@ export const sections = {
       delivery: "哆啦A梦",
       note: "出口中转非落地",
       remark: "TW 落地仅限于非 Hinet 家宽使用",
-      contact: "https://t.me/your_username"
+      contact: "https://t.me/MesNANA_bot"
     },
     {
       name: "Akari-JP",
@@ -83,7 +83,7 @@ export const sections = {
       stock: "3/20",
       delivery: "哆啦A梦",
       note: "出口中转非落地",
-      contact: "https://t.me/your_username"
+      contact: "https://t.me/MesNANA_bot"
     },
     {
       name: "Akari-SG",
@@ -95,7 +95,7 @@ export const sections = {
       stock: "2/20",
       delivery: "哆啦A梦",
       note: "出口中转非落地",
-      contact: "https://t.me/your_username"
+      contact: "https://t.me/MesNANA_bot"
     }
   ]
 };
