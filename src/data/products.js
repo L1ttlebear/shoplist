@@ -2,7 +2,10 @@ export const sections = {
   A: [
     {
       type: "section",
-      name: "A车"
+      name: "A车: ix深港杜甫",
+      datacenter: "前海 Internet Exchange Point",
+      payCycle: "最低季付起拼，月付仅为参考价格",
+      discount: "年付 9 折优惠"
     },
     {
       name: "ix杜甫拼车",
@@ -11,8 +14,8 @@ export const sections = {
       plan: "Plan 1",
       traffic: "500G 双向",
       bandwidth: "1 Gbps",
-      priceMonthly: 162,
-      ports: 20,
+      priceMonthly: 15,
+      ports: "20（不够可联系添加）",
       stock: "27/40",
       delivery: "哆啦A梦",
       note: "最低只接受季付",
@@ -25,8 +28,8 @@ export const sections = {
       plan: "Plan 2",
       traffic: "1T 双向",
       bandwidth: "1 Gbps",
-      priceMonthly: 240,
-      ports: 20,
+      priceMonthly: 25,
+      ports: "20（不够可联系添加）",
       stock: "10/20",
       delivery: "哆啦A梦",
       note: "最低只接受季付",
@@ -36,13 +39,20 @@ export const sections = {
   B: [
     {
       type: "section",
-      name: "B车"
+      name: "Akari亚太内网互联",
+      payCycle: "最低季付起拼 / 年付",
+      latency: [
+        "香港 - 台北：13.7ms",
+        "香港 - 新加坡：31.5ms",
+        "香港 - 东京：44.1ms"
+      ]
     },
     {
-      name: "B车 Akari-HK Plan ALL",
+      name: "Akari-HK",
       traffic: "500G 双向",
       bandwidth: "1 Gbps(共享)",
-      priceMonthly: 0,
+      priceQuarter2: "任意选两区域：10 CNY",
+      priceQuarter4: "四区域全：15 CNY",
       ports: 10,
       stock: "2/20",
       delivery: "哆啦A梦",
@@ -50,10 +60,11 @@ export const sections = {
       contact: "https://t.me/your_username"
     },
     {
-      name: "B车 Akari-TW Plan ALL",
+      name: "Akari-TW",
       traffic: "500G 双向",
       bandwidth: "1 Gbps(共享)",
-      priceMonthly: 0,
+      priceQuarter2: "任意选两区域：10 CNY",
+      priceQuarter4: "四区域全：15 CNY",
       ports: 10,
       stock: "1/20",
       delivery: "哆啦A梦",
@@ -62,10 +73,11 @@ export const sections = {
       contact: "https://t.me/your_username"
     },
     {
-      name: "B车 Akari-JP Plan ALL",
+      name: "Akari-JP",
       traffic: "500G 双向",
       bandwidth: "1 Gbps(共享)",
-      priceMonthly: 0,
+      priceQuarter2: "任意选两区域：10 CNY",
+      priceQuarter4: "四区域全：15 CNY",
       ports: 10,
       stock: "3/20",
       delivery: "哆啦A梦",
@@ -73,10 +85,11 @@ export const sections = {
       contact: "https://t.me/your_username"
     },
     {
-      name: "B车 Akari-SG Plan ALL",
+      name: "Akari-SG",
       traffic: "500G 双向",
       bandwidth: "1 Gbps(共享)",
-      priceMonthly: 0,
+      priceQuarter2: "任意选两区域：10 CNY",
+      priceQuarter4: "四区域全：15 CNY",
       ports: 10,
       stock: "2/20",
       delivery: "哆啦A梦",
