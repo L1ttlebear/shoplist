@@ -53,7 +53,7 @@ import { sections } from "./data/products";
 import ProductCard from "./components/ProductCard.vue";
 import { STYLE_SRC_CONFIG } from "./style-src-config";
 
-const { backgroundUrl, avatarUrl, name, signatures, links } = STYLE_SRC_CONFIG;
+const { avatarUrl, name, signatures, links } = STYLE_SRC_CONFIG;
 
 const typedText = ref("");
 let sigIndex = 0;
@@ -110,7 +110,7 @@ const bRows = computed(() => chunk(bItems, 2));
   min-height:100%;
 }
 :global(body){
-  background:url(v-bind(backgroundUrl)) center/cover no-repeat fixed;
+  background:url('https://img.ezov.de/uploads/2026/03/tjp6VCWe6TxH.webp') center/cover no-repeat fixed;
 }
 @media (max-width: 640px){
   :global(body){
