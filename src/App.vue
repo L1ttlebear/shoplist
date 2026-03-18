@@ -114,8 +114,7 @@ const bRows = computed(() => chunk(bItems, 2));
 }
 @media (max-width: 640px){
   :global(body){
-    background-position:center center;
-    background-attachment:scroll;
+    background:url('https://img.ezov.de/uploads/2026/03/ts9m2gS7FTgY.webp') center/cover no-repeat scroll;
   }
 }
 .page{max-width:1500px;margin:24px auto;padding:0 16px;}
