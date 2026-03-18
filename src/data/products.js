@@ -40,7 +40,7 @@ export const sections = {
     {
       type: "section",
       name: "Akari亚太内网互联",
-      payCycle: "最低季付起拼 / 年付",
+      payCycle: "最低季付起拼",
       latency: [
         "香港 - 台北：13.7ms",
         "香港 - 新加坡：31.5ms",
