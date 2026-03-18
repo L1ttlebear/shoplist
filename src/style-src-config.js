@@ -4,8 +4,8 @@ export const STYLE_SRC_CONFIG = {
   name: "NANA",
   signatures: [
     "快来拼车吧,少年~",
-    "怎样才算好呢?好难抉择呀!",
-    "人没有梦想,和咸鱼有什么区别!!"
+    "怎样才算好呢?",
+    "咸鱼一条 ! ! !"
   ],
   links: [
     {
