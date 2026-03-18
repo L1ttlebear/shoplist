@@ -90,11 +90,12 @@ defineProps({ p: Object });
 }
 .card.section{
   min-height:190px;
-  justify-content:center;
-  align-items:center;
+  justify-content:flex-start;
+  align-items:stretch;
 }
 .card.section .title{
-  margin-bottom:10px;
+  margin-bottom:12px;
+  align-self:stretch;
 }
 .title{
   font-size:18px;
@@ -103,7 +104,7 @@ defineProps({ p: Object });
 }
 .title.center{
   text-align:center;
-  font-size:20px;
+  font-size:22px;
   margin-top:2px;
 }
 .section-center{
