@@ -7,14 +7,14 @@
     <!-- Section cards (A车/B车说明卡) -->
     <div v-if="p.type === 'section'" class="section-center">
       <div class="inner-box" v-if="p.datacenter || p.payCycle || p.discount">
-        <div v-if="p.datacenter"><b>数据中心</b>：{{ p.datacenter }}</div>
-        <div v-if="p.payCycle"><b>付款周期</b>：{{ p.payCycle }}</div>
-        <div v-if="p.discount"><b>优惠</b>：{{ p.discount }}</div>
+        <div v-if="p.datacenter"><b>数据中心:</b> {{ p.datacenter }}</div>
+        <div v-if="p.payCycle"><b>付款周期:</b> {{ p.payCycle }}</div>
+        <div v-if="p.discount"><b>优惠:</b> {{ p.discount }}</div>
       </div>
 
       <div class="inner-box" v-if="p.latency && p.latency.length">
         <div class="latency">
-          <div><b>延迟列表</b>：</div>
+          <div><b>延迟列表:</b></div>
           <div class="latency-list">
             <div v-for="(l, i) in p.latency" :key="i">{{ l }}</div>
           </div>
@@ -24,17 +24,26 @@
 
     <!-- Product cards -->
     <div v-else class="list">
-      <div v-if="p.preVendors"><b>前置可通厂商</b>：{{ p.preVendors }}</div>
-      <div v-if="p.cpu"><b>CPU</b>：{{ p.cpu }}</div>
-      <div v-if="p.plan"><b>套餐</b>：{{ p.plan }}</div>
-      <div v-if="p.traffic"><b>流量(双向)</b>：{{ p.traffic }}</div>
-      <div v-if="p.bandwidth"><b>带宽</b>：{{ p.bandwidth }}</div>
-      <div v-if="p.priceMonthly"><b>价格(月付)</b>：{{ p.priceMonthly }} CNY</div>
-      <div v-if="p.priceQuarter2"><b>价格(季付)</b>：{{ p.priceQuarter2 }}</div>
-      <div v-if="p.priceQuarter4"><b>价格(季付)</b>：{{ p.priceQuarter4 }}</div>
-      <div v-if="p.ports !== undefined"><b>端口</b>：{{ p.ports }}</div>
-      <div v-if="p.stock"><b>库存</b>：{{ p.stock }}</div>
-      <div v-if="p.delivery"><b>交付方式</b>：{{ p.delivery }}</div>
+      <div v-if="p.preVendors"><b>前置可通厂商:</b> {{ p.preVendors }}</div>
+      <div v-if="p.cpu"><b>CPU:</b> {{ p.cpu }}</div>
+      <div v-if="p.plan"><b>套餐:</b> {{ p.plan }}</div>
+      <div v-if="p.traffic"><b>流量(双向):</b> {{ p.traffic }}</div>
+      <div v-if="p.bandwidth"><b>带宽:</b> {{ p.bandwidth }}</div>
+      <div v-if="p.priceMonthly"><b>价格(月付):</b> {{ p.priceMonthly }} CNY</div>
+      <div v-if="p.priceQuarter2"><b>价格(季付):</b> {{ p.priceQuarter2 }}</div>
+      <div v-if="p.priceQuarter4"><b>价格(季付):</b> {{ p.priceQuarter4 }}</div>
+      <div v-if="p.ports !== undefined"><b>端口:</b> {{ p.ports }}</div>
+
+      <div v-if="p.stock" class="stock-box">
+        <div class="stock-title"><b>库存:</b> 已拼 / 总量 / 剩余车位</div>
+        <div class="stock-grid">
+          <span>{{ (p.stock || '').split('/')[0] }}</span>
+          <span>{{ (p.stock || '').split('/')[1] }}</span>
+          <span>{{ (p.stock || '').split('/')[1] - (p.stock || '').split('/')[0] }}</span>
+        </div>
+      </div>
+
+      <div v-if="p.delivery"><b>交付方式:</b> {{ p.delivery }}</div>
     </div>
 
     <div class="note" v-if="p.note">* {{ p.note }}</div>
@@ -113,6 +122,21 @@ defineProps({ p: Object });
   font-weight:700;
   min-width:92px;
   display:inline-block;
+}
+.stock-box{
+  margin-top:6px;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  padding:8px 10px;
+  background:#fafafa;
+}
+.stock-title{font-size:12.5px;color:#374151;margin-bottom:6px;}
+.stock-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:6px;
+  text-align:center;
+  font-weight:700;
 }
 .note,.remark{color:#6b7280;font-size:12px;}
 .btn{
