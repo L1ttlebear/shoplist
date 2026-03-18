@@ -59,7 +59,7 @@
         <div class="stock-grid">
           <span>{{ (p.stock || '').split('/')[0] }}</span>
           <span>{{ (p.stock || '').split('/')[1] }}</span>
-          <span>{{ (p.stock || '').split('/')[1] - (p.stock || '').split('/')[0] }}</span>
+          <span class="stock-left">{{ (p.stock || '').split('/')[1] - (p.stock || '').split('/')[0] }}</span>
         </div>
       </div>
 
@@ -103,6 +103,8 @@ defineProps({ p: Object });
 }
 .title.center{
   text-align:center;
+  font-size:20px;
+  margin-top:2px;
 }
 .section-center{
   width:100%;
@@ -180,6 +182,9 @@ defineProps({ p: Object });
 }
 .stock-grid span:not(:last-child){
   border-right:1px solid #e5e7eb;
+}
+.stock-left{
+  color:#b35220;
 }
 .price-box{
   margin-top:6px;
