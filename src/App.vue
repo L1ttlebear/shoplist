@@ -111,6 +111,9 @@ const bRows = computed(() => chunk(bItems, 2));
 </script>
 
 <style scoped>
+:global(body){
+  background:url('https://img.ezov.de/uploads/2026/03/GwO0r_-FDgMx.webp') center/cover fixed no-repeat;
+}
 .page{max-width:1500px;margin:24px auto;padding:0 16px;}
 .page h1{ text-align:center; margin-bottom:16px; }
 
@@ -137,30 +140,31 @@ const bRows = computed(() => chunk(bItems, 2));
 
 .sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;}
 .profile-card{
-  border:1px solid #e5e7eb;
+  border:1px solid #111827;
   border-radius:12px;
   padding:14px;
-  background:#fff;
+  background:#111827;
+  color:#fff;
   display:flex;
   gap:12px;
   align-items:center;
 }
 .avatar{width:64px;height:64px;border-radius:12px;object-fit:cover;}
-.profile-text .name{font-size:18px;font-weight:700;margin-bottom:6px;}
-.signature{font-weight:700;font-size:14px;color:#111827;min-height:22px;}
+.profile-text .name{font-size:18px;font-weight:700;margin-bottom:6px;color:#fff;}
+.signature{font-weight:700;font-size:14px;color:#fff;min-height:22px;}
 .cursor{margin-left:2px;animation:blink 1s infinite;}
 
 .side-btn{
-  border:1px solid #e5e7eb;
+  border:1px solid #111827;
   border-radius:12px;
   padding:10px 12px;
   text-align:center;
-  background:#fff;
-  color:#111827;
+  background:#111827;
+  color:#fff;
   text-decoration:none;
   font-weight:600;
 }
-.side-btn:hover{background:#f9fafb;}
+.side-btn:hover{background:#0b1220;}
 
 @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
 </style>
