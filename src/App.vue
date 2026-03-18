@@ -1,6 +1,8 @@
 <template>
   <div class="page">
-    <h1>NANAの拼车</h1>
+    <div class="title-card">
+      <h1>NANAの拼车</h1>
+    </div>
 
     <div class="layout">
       <main class="main">
@@ -115,7 +117,26 @@ const bRows = computed(() => chunk(bItems, 2));
   background:url('https://img.ezov.de/uploads/2026/03/sItZmWb3CAfe.webp') center/cover fixed no-repeat;
 }
 .page{max-width:1500px;margin:24px auto;padding:0 16px;}
-.page h1{ text-align:center; margin-bottom:16px; }
+.page h1{ text-align:center; margin:0; }
+.title-card{
+  margin:0 auto 18px;
+  max-width:520px;
+  padding:10px 16px;
+  text-align:center;
+  border-radius:14px;
+  background:rgba(0,0,0,.55);
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+.title-card h1{
+  font-size:28px;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:2px;
+  text-shadow:0 2px 10px rgba(0,0,0,.5);
+}
 
 .layout{display:grid;grid-template-columns:minmax(760px, 1fr) 260px;gap:24px;align-items:start;}
 @media (max-width: 980px){
@@ -134,9 +155,19 @@ const bRows = computed(() => chunk(bItems, 2));
 }
 
 .divider{height:1px;background:#e5e7eb;margin:20px 0;}
-.extras{margin:10px 0 20px;padding:12px 16px;border:1px dashed #e5e7eb;border-radius:12px;background:#fafafa;}
-.extras h2{font-size:16px;margin:0 0 8px;}
-.extras ul{margin:0;padding-left:18px;color:#374151;}
+.extras{
+  margin:10px 0 20px;
+  padding:12px 16px;
+  border-radius:12px;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+.extras h2{font-size:16px;margin:0 0 8px;color:#fff;}
+.extras ul{margin:0;padding-left:18px;color:#fff;}
 
 .sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;}
 .profile-card{
