@@ -109,6 +109,12 @@ const bRows = computed(() => chunk(bItems, 2));
 :global(body){
   background:url('https://img.ezov.de/uploads/2026/03/sItZmWb3CAfe.webp') center/cover fixed no-repeat;
 }
+@media (max-width: 640px){
+  :global(body){
+    background-position:center center;
+    background-attachment:scroll;
+  }
+}
 .page{max-width:1500px;margin:24px auto;padding:0 16px;}
 .page h1{ text-align:center; margin:0; }
 .title-card{
@@ -134,6 +140,10 @@ const bRows = computed(() => chunk(bItems, 2));
 .layout{display:grid;grid-template-columns:minmax(760px, 1fr) 260px;gap:24px;align-items:start;}
 @media (max-width: 980px){
   .layout{grid-template-columns:1fr;}
+}
+@media (max-width: 640px){
+  .layout{grid-template-columns:1fr;}
+  .sidebar{order:-1;margin-bottom:10px;}
 }
 
 .main{}
