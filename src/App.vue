@@ -43,15 +43,6 @@
         <a class="side-btn" href="https://t.me/MesNANA_bot" target="_blank">Telegram - Bot</a>
       </aside>
 
-      <aside class="rightbox">
-        <div class="extra-card">
-          <div class="extra-title">公告</div>
-          <ul>
-            <li>这里填写内容（可改）</li>
-            <li>支持放文字/活动/联系方式</li>
-          </ul>
-        </div>
-      </aside>
     </div>
   </div>
 </template>
@@ -123,11 +114,7 @@ const bRows = computed(() => chunk(bItems, 2));
 .page{max-width:1500px;margin:24px auto;padding:0 16px;}
 .page h1{ text-align:center; margin-bottom:16px; }
 
-.layout{display:grid;grid-template-columns:minmax(760px, 1fr) 260px 260px;gap:24px;align-items:start;}
-@media (max-width: 1400px){
-  .layout{grid-template-columns:1fr 260px;}
-  .rightbox{grid-column:2;grid-row:2;}
-}
+.layout{display:grid;grid-template-columns:minmax(760px, 1fr) 260px;gap:24px;align-items:start;}
 @media (max-width: 980px){
   .layout{grid-template-columns:1fr;}
 }
@@ -149,7 +136,6 @@ const bRows = computed(() => chunk(bItems, 2));
 .extras ul{margin:0;padding-left:18px;color:#374151;}
 
 .sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;}
-.rightbox{position:sticky;top:12px;}
 .profile-card{
   border:1px solid #e5e7eb;
   border-radius:12px;
@@ -175,15 +161,6 @@ const bRows = computed(() => chunk(bItems, 2));
   font-weight:600;
 }
 .side-btn:hover{background:#f9fafb;}
-
-.extra-card{
-  border:1px solid #e5e7eb;
-  border-radius:12px;
-  padding:14px;
-  background:#fff;
-}
-.extra-title{font-size:16px;font-weight:700;margin-bottom:8px;text-align:center;}
-.extra-card ul{margin:0;padding-left:18px;color:#374151;}
 
 @keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
 </style>
