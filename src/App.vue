@@ -1,28 +1,24 @@
 <script setup>
-/**
- * 💡 修改说明：
- * 后续如需调整颜色、间距、模糊度，请直接在 src/style-src-config.js 中修改。
- * 确保该文件导出了包含 colors, glassEffect, layout 等属性的对象。
- */
-import { styleConfig } from './style-src-config.js'
+import { STYLE_SRC_CONFIG } from './style-src-config.js'
 
-// 将配置项解构，方便模板调用
-const { colors, glassEffect, layout } = styleConfig
+// 提取配置
+const { backgroundUrl, avatarUrl, name, signatures, links } = STYLE_SRC_CONFIG
 </script>
 
 <template>
-  <div class="shoplist-wrapper" :style="{ 
-    '--bg-main': colors.background,
-    '--card-bg': colors.cardBg,
-    '--text-main': colors.textMain,
-    '--blur-val': glassEffect.blur,
-    '--card-padding': layout.cardPadding,
-    '--accent-danger': colors.danger,
-    '--accent-success': colors.success
-  }">
+  <div class="page-background" :style="{ backgroundImage: `url(${backgroundUrl})` }"></div>
+
+  <div class="shoplist-wrapper">
     <div class="content-container">
-      <header class="main-header">
-        <h1>NANAの拼车</h1>
+      
+      <header class="profile-header glass-card">
+        <img :src="avatarUrl" class="avatar" alt="avatar" />
+        <div class="info">
+          <h1>{{ name }}の拼车</h1>
+          <div class="signature-box">
+            <p v-for="(sig, index) in signatures" :key="index" class="sig-item">{{ sig }}</p>
+          </div>
+        </div>
       </header>
 
       <section class="glass-card">
@@ -99,141 +95,116 @@ const { colors, glassEffect, layout } = styleConfig
         <footer class="table-footer">注：ix通腾讯 华为 阿里 火山 百度等大厂</footer>
       </section>
 
-      <section class="glass-card policy-section">
+      <section class="glass-card">
         <h3>📜 须知 & 政策</h3>
         <ul class="policy-list">
           <li><strong>严禁</strong>: 机场 / 车中车 (违者清退不退款)</li>
           <li><strong>退款</strong>: 跳车、个人问题不退；车主/商家问题按余值退</li>
           <li><strong>技术</strong>: 提供 TG 全方位支持</li>
         </ul>
-        <p class="agreement-text">上车即代表同意上述政策</p>
       </section>
+
+      <footer class="links-footer">
+        <a v-for="link in links" :key="link.label" :href="link.url" target="_blank" class="link-btn glass-card">
+          {{ link.label }}
+        </a>
+      </footer>
+      
+      <p class="agreement-text">上车即代表同意上述政策</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-/* 使用 var() 引用来自 JS 的变量 */
+.page-background {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  filter: brightness(0.9);
+}
+
 .shoplist-wrapper {
   min-height: 100vh;
-  background-color: var(--bg-main);
-  padding: 60px 20px;
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: var(--text-main);
-  transition: background-color 0.3s ease;
-}
-
-.content-container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.main-header {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.main-header h1 {
-  font-size: 2.2rem;
-  font-weight: 800;
+  padding: 40px 20px;
+  font-family: -apple-system, system-ui, sans-serif;
   color: #1e293b;
-  letter-spacing: -0.025em;
 }
 
-/* 卡片样式：实现毛玻璃的核心 */
+.content-container { max-width: 800px; margin: 0 auto; }
+
+/* 毛玻璃基础卡片 */
 .glass-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(var(--blur-val));
-  -webkit-backdrop-filter: blur(var(--blur-val));
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-radius: 16px;
-  padding: var(--card-padding);
-  margin-bottom: 30px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: transform 0.2s ease;
+  padding: 24px;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #0f172a;
+/* 个人信息栏 */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
+.avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.profile-header h1 { font-size: 1.5rem; margin: 0 0 8px 0; color: #0f172a; }
+.signature-box { font-size: 0.85rem; color: #64748b; line-height: 1.4; }
+.sig-item { margin: 2px 0; }
 
-.data-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
+/* 表格样式 */
+h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 16px; }
+.table-responsive { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { text-align: left; padding: 12px; font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; border-bottom: 1px solid rgba(0,0,0,0.05); }
+.data-table td { padding: 12px; font-size: 0.9rem; border-bottom: 1px solid rgba(0,0,0,0.02); }
 
-.data-table th {
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #94a3b8;
-  text-transform: uppercase;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.data-table td {
-  padding: 16px;
-  font-size: 0.95rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
-}
-
-.status-tag {
-  font-size: 0.85rem;
-  margin-left: 6px;
-  font-weight: 600;
-}
-.danger { color: var(--accent-danger); }
-.success { color: var(--accent-success); }
+.status-tag { font-size: 0.8rem; font-weight: 600; margin-left: 4px; }
+.danger { color: #ef4444; }
+.success { color: #10b981; }
 
 .alert-bar {
-  background-color: rgba(0, 0, 0, 0.03);
-  border-left: 4px solid var(--accent-danger);
-  border-radius: 4px;
-  padding: 12px 16px;
-  font-size: 0.875rem;
-  color: #475569;
-  margin-top: 10px;
-}
-
-code {
-  background: rgba(0, 0, 0, 0.06);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: ui-monospace, monospace;
-}
-
-.table-footer {
-  margin-top: 15px;
-  font-size: 0.8rem;
-  color: #94a3b8;
-}
-
-.policy-list {
-  padding-left: 20px;
-  margin: 15px 0;
-}
-
-.policy-list li {
-  margin-bottom: 12px;
-  font-size: 0.9rem;
-}
-
-.agreement-text {
-  text-align: center;
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 4px solid #ef4444;
+  padding: 10px 14px;
   font-size: 0.85rem;
-  color: #cbd5e1;
-  margin-top: 40px;
+  margin-top: 15px;
+  border-radius: 4px;
 }
 
-/* 移动端适配优化 */
-@media (max-width: 640px) {
-  .glass-card { padding: 20px; }
-  .main-header h1 { font-size: 1.8rem; }
-  .data-table td, .data-table th { padding: 10px 8px; font-size: 0.85rem; }
+.table-footer { font-size: 0.75rem; color: #94a3b8; margin-top: 12px; }
+
+/* 底部按钮 */
+.links-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
 }
-</style>
+.link-btn {
+  padding: 12px 20px;
+  margin: 0;
+  text-decoration: none;
+  color: #1e293b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+.link-btn:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.9); }
+
+.policy-list { padding-left: 20px; font-size: 0.9rem; line-height: 1.6; }
+.agreement-text { text-align: center; font-size: 0.8rem; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.5); margin-top: 40px; opacity: 0.7; }
+
+@media (max-width: 640px) {
+  .profile-header {
