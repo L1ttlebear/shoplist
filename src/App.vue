@@ -1,5 +1,25 @@
+<script setup>
+/**
+ * 💡 修改说明：
+ * 后续如需调整颜色、间距、模糊度，请直接在 src/style-src-config.js 中修改。
+ * 确保该文件导出了包含 colors, glassEffect, layout 等属性的对象。
+ */
+import { styleConfig } from './style-src-config.js'
+
+// 将配置项解构，方便模板调用
+const { colors, glassEffect, layout } = styleConfig
+</script>
+
 <template>
-  <div class="shoplist-wrapper">
+  <div class="shoplist-wrapper" :style="{ 
+    '--bg-main': colors.background,
+    '--card-bg': colors.cardBg,
+    '--text-main': colors.textMain,
+    '--blur-val': glassEffect.blur,
+    '--card-padding': layout.cardPadding,
+    '--accent-danger': colors.danger,
+    '--accent-success': colors.success
+  }">
     <div class="content-container">
       <header class="main-header">
         <h1>NANAの拼车</h1>
@@ -71,7 +91,6 @@
                 <td><strong>15/月</strong> <span class="status-tag danger">(余5)</span></td>
               </tr>
             </tbody>
-          </tbody>
           </table>
         </div>
         <div class="alert-bar warning">
@@ -94,13 +113,14 @@
 </template>
 
 <style scoped>
-/* 容器与背景 */
+/* 使用 var() 引用来自 JS 的变量 */
 .shoplist-wrapper {
   min-height: 100vh;
-  background-color: #f8fafc; /* 浅灰蓝背景 */
+  background-color: var(--bg-main);
   padding: 60px 20px;
   font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #334155;
+  color: var(--text-main);
+  transition: background-color 0.3s ease;
 }
 
 .content-container {
@@ -120,14 +140,17 @@
   letter-spacing: -0.025em;
 }
 
-/* 卡片样式 */
+/* 卡片样式：实现毛玻璃的核心 */
 .glass-card {
-  background: #ffffff;
+  background: var(--card-bg);
+  backdrop-filter: blur(var(--blur-val));
+  -webkit-backdrop-filter: blur(var(--blur-val));
   border-radius: 16px;
-  padding: 32px;
+  padding: var(--card-padding);
   margin-bottom: 30px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: transform 0.2s ease;
 }
 
 h2 {
@@ -135,11 +158,6 @@ h2 {
   font-weight: 700;
   margin-bottom: 20px;
   color: #0f172a;
-}
-
-/* 表格样式 */
-.table-responsive {
-  overflow-x: auto;
 }
 
 .data-table {
@@ -155,27 +173,27 @@ h2 {
   font-weight: 600;
   color: #94a3b8;
   text-transform: uppercase;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .data-table td {
   padding: 16px;
   font-size: 0.95rem;
-  border-bottom: 1px solid #f8fafc;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
 }
 
-/* 标签与警告框 */
 .status-tag {
   font-size: 0.85rem;
   margin-left: 6px;
-  font-weight: 500;
+  font-weight: 600;
 }
-.danger { color: #ef4444; }
-.success { color: #10b981; }
+.danger { color: var(--accent-danger); }
+.success { color: var(--accent-success); }
 
 .alert-bar {
-  background-color: #fff1f2;
-  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-left: 4px solid var(--accent-danger);
+  border-radius: 4px;
   padding: 12px 16px;
   font-size: 0.875rem;
   color: #475569;
@@ -183,7 +201,7 @@ h2 {
 }
 
 code {
-  background: rgba(0, 0, 0, 0.04);
+  background: rgba(0, 0, 0, 0.06);
   padding: 2px 6px;
   border-radius: 4px;
   font-family: ui-monospace, monospace;
@@ -195,14 +213,13 @@ code {
   color: #94a3b8;
 }
 
-/* 政策部分 */
 .policy-list {
   padding-left: 20px;
   margin: 15px 0;
 }
 
 .policy-list li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-size: 0.9rem;
 }
 
@@ -210,6 +227,13 @@ code {
   text-align: center;
   font-size: 0.85rem;
   color: #cbd5e1;
-  margin-top: 30px;
+  margin-top: 40px;
+}
+
+/* 移动端适配优化 */
+@media (max-width: 640px) {
+  .glass-card { padding: 20px; }
+  .main-header h1 { font-size: 1.8rem; }
+  .data-table td, .data-table th { padding: 10px 8px; font-size: 0.85rem; }
 }
 </style>
