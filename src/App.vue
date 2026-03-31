@@ -1,179 +1,215 @@
 <template>
-  <div class="shoplist-container">
-    <header class="header">
-      <h1>NANAの拼车</h1>
-    </header>
+  <div class="shoplist-wrapper">
+    <div class="content-container">
+      <header class="main-header">
+        <h1>NANAの拼车</h1>
+      </header>
 
-    <div class="card">
-      <h2># 1. 节点交付 (单向流量)</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>套餐</th>
-              <th>流量/带宽</th>
-              <th>价格(月)</th>
-              <th>价格(季)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>GOMAMI</strong></td>
-              <td>100G / 2Gbps</td>
-              <td><strong>30/月</strong> <span class="status">(缺6)</span></td>
-              <td><strong>75/季</strong> <span class="status">(缺6)</span></td>
-            </tr>
-            <tr>
-              <td><strong>SeedNet</strong></td>
-              <td>2T / 300Mbps</td>
-              <td><strong>30/月</strong> <span class="status">(缺5)</span></td>
-              <td><strong>75/季</strong> <span class="status">(缺5)</span></td>
-            </tr>
+      <section class="glass-card">
+        <h2># 1. 节点交付 (单向流量)</h2>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>套餐</th>
+                <th>流量/带宽</th>
+                <th>价格(月)</th>
+                <th>价格(季)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GOMAMI</strong></td>
+                <td>100G / 2Gbps</td>
+                <td><strong>30/月</strong> <span class="status-tag danger">(缺6)</span></td>
+                <td><strong>75/季</strong> <span class="status-tag danger">(缺6)</span></td>
+              </tr>
+              <tr>
+                <td><strong>SeedNet</strong></td>
+                <td>2T / 300Mbps</td>
+                <td><strong>30/月</strong> <span class="status-tag danger">(缺5)</span></td>
+                <td><strong>75/季</strong> <span class="status-tag danger">(缺5)</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="alert-bar warning">
+          ⚠️ SeedNet: 05:00 换IP / 禁直连 / 仅落地
+        </div>
+      </section>
+
+      <section class="glass-card">
+        <h2># 2. IX 线路 (自备落地) 500G 双向</h2>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>套餐</th>
+                <th>方案</th>
+                <th>价格</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>套餐 A</strong></td>
+                <td>前置G口 + IX + 内网</td>
+                <td><strong>70/月</strong> <span class="status-tag success">(长期有位)</span></td>
+              </tr>
+              <tr>
+                <td><strong>套餐 B</strong></td>
+                <td>前置G口 + IX</td>
+                <td><strong>55/月</strong> <span class="status-tag success">(长期有位)</span></td>
+              </tr>
+              <tr>
+                <td><strong>套餐 C</strong></td>
+                <td>IX + 内网</td>
+                <td><strong>30/月</strong> <span class="status-tag success">(长期有位)</span></td>
+              </tr>
+              <tr>
+                <td><strong>套餐 D</strong></td>
+                <td>仅IX (送阿里200M)</td>
+                <td><strong>15/月</strong> <span class="status-tag danger">(余5)</span></td>
+              </tr>
+            </tbody>
           </tbody>
-        </table>
-      </div>
-      <div class="warning-box">
-        ⚠️ SeedNet: 05:00 换IP / 禁直连 / 仅落地
-      </div>
-    </div>
+          </table>
+        </div>
+        <div class="alert-bar warning">
+          ⚠️ 落地仅允许协议: <code>SS 2022-blake3</code> / <code>vless+enc</code>
+        </div>
+        <footer class="table-footer">注：ix通腾讯 华为 阿里 火山 百度等大厂</footer>
+      </section>
 
-    <div class="card">
-      <h2># 2. IX 线路 (自备落地) 500G 双向</h2>
-      <div class="table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>套餐</th>
-              <th>方案</th>
-              <th>价格</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>套餐 A</strong></td>
-              <td>前置G口 + IX + 内网</td>
-              <td><strong>70/月</strong> <span class="status-ok">(长期有位)</span></td>
-            </tr>
-            <tr>
-              <td><strong>套餐 B</strong></td>
-              <td>前置G口 + IX</td>
-              <td><strong>55/月</strong> <span class="status-ok">(长期有位)</span></td>
-            </tr>
-            <tr>
-              <td><strong>套餐 C</strong></td>
-              <td>IX + 内网</td>
-              <td><strong>30/月</strong> <span class="status-ok">(长期有位)</span></td>
-            </tr>
-            <tr>
-              <td><strong>套餐 D</strong></td>
-              <td>仅IX (送阿里200M)</td>
-              <td><strong>15/月</strong> <span class="status">(余5)</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="warning-box">
-        ⚠️ 落地仅允许协议: <code>SS 2022-blake3</code> / <code>vless+enc</code>
-      </div>
-      <p class="extra-note">注：ix通腾讯 华为 阿里 火山 百度等大厂</p>
-    </div>
-
-    <div class="card policy">
-      <h3>📜 须知 & 政策</h3>
-      <ul>
-        <li><strong>严禁</strong>: 机场 / 车中车 (违者清退不退款)</li>
-        <li><strong>退款</strong>: 跳车、个人问题不退；车主/商家问题按余值退</li>
-        <li><strong>技术</strong>: 提供 TG 全方位支持</li>
-      </ul>
-      <p class="footer-msg">上车即代表同意上述政策</p>
+      <section class="glass-card policy-section">
+        <h3>📜 须知 & 政策</h3>
+        <ul class="policy-list">
+          <li><strong>严禁</strong>: 机场 / 车中车 (违者清退不退款)</li>
+          <li><strong>退款</strong>: 跳车、个人问题不退；车主/商家问题按余值退</li>
+          <li><strong>技术</strong>: 提供 TG 全方位支持</li>
+        </ul>
+        <p class="agreement-text">上车即代表同意上述政策</p>
+      </section>
     </div>
   </div>
 </template>
 
 <style scoped>
-.shoplist-container {
-  max-width: 800px;
+/* 容器与背景 */
+.shoplist-wrapper {
+  min-height: 100vh;
+  background-color: #f8fafc; /* 浅灰蓝背景 */
+  padding: 60px 20px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #334155;
+}
+
+.content-container {
+  max-width: 900px;
   margin: 0 auto;
-  padding: 40px 20px;
 }
 
-.header {
+.main-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.main-header h1 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1e293b;
+  letter-spacing: -0.025em;
+}
+
+/* 卡片样式 */
+.glass-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
   margin-bottom: 30px;
-}
-
-h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: #2c3e50;
-}
-
-.card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f1f5f9;
 }
 
 h2 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  color: #333;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #0f172a;
 }
 
-.table-wrapper {
+/* 表格样式 */
+.table-responsive {
   overflow-x: auto;
 }
 
-table {
+.data-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.95rem;
+  margin-bottom: 20px;
 }
 
-th, td {
+.data-table th {
   text-align: left;
-  padding: 12px 8px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-th {
-  color: #888;
-  font-weight: 500;
-  text-transform: uppercase;
+  padding: 12px 16px;
   font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.warning-box {
-  margin-top: 15px;
-  padding: 10px 12px;
-  background: rgba(255, 71, 87, 0.08);
-  border-left: 4px solid #ff4757;
+.data-table td {
+  padding: 16px;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f8fafc;
+}
+
+/* 标签与警告框 */
+.status-tag {
   font-size: 0.85rem;
-  color: #444;
+  margin-left: 6px;
+  font-weight: 500;
+}
+.danger { color: #ef4444; }
+.success { color: #10b981; }
+
+.alert-bar {
+  background-color: #fff1f2;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.875rem;
+  color: #475569;
+  margin-top: 10px;
 }
 
 code {
-  font-family: ui-monospace, monospace;
-  background: rgba(0, 0, 0, 0.06);
-  padding: 2px 5px;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 2px 6px;
   border-radius: 4px;
+  font-family: ui-monospace, monospace;
 }
 
-.status { color: #ff4757; margin-left: 4px; }
-.status-ok { color: #2ed573; margin-left: 4px; }
-.extra-note { font-size: 0.8rem; color: #999; margin-top: 10px; }
+.table-footer {
+  margin-top: 15px;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
 
-.policy h3 { margin-bottom: 12px; }
-.policy ul { padding-left: 18px; margin: 0; }
-.policy li { font-size: 0.9rem; margin-bottom: 6px; }
-.footer-msg { 
-  margin-top: 20px; 
-  font-size: 0.8rem; 
-  color: #bbb; 
+/* 政策部分 */
+.policy-list {
+  padding-left: 20px;
+  margin: 15px 0;
+}
+
+.policy-list li {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.agreement-text {
   text-align: center;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  margin-top: 30px;
 }
 </style>
