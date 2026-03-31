@@ -1,216 +1,179 @@
 <template>
-  <div class="page">
-    <div class="title-card">
+  <div class="shoplist-container">
+    <header class="header">
       <h1>NANAの拼车</h1>
+    </header>
+
+    <div class="card">
+      <h2># 1. 节点交付 (单向流量)</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>套餐</th>
+              <th>流量/带宽</th>
+              <th>价格(月)</th>
+              <th>价格(季)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>GOMAMI</strong></td>
+              <td>100G / 2Gbps</td>
+              <td><strong>30/月</strong> <span class="status">(缺6)</span></td>
+              <td><strong>75/季</strong> <span class="status">(缺6)</span></td>
+            </tr>
+            <tr>
+              <td><strong>SeedNet</strong></td>
+              <td>2T / 300Mbps</td>
+              <td><strong>30/月</strong> <span class="status">(缺5)</span></td>
+              <td><strong>75/季</strong> <span class="status">(缺5)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warning-box">
+        ⚠️ SeedNet: 05:00 换IP / 禁直连 / 仅落地
+      </div>
     </div>
 
-    <div class="layout">
-      <main class="main">
-        <div class="extras">
-          <h2>可选项目</h2>
-          <ul>
-            <li>ix深港杜甫</li>
-            <li>Akari亚太内网</li>
-          </ul>
-        </div>
+    <div class="card">
+      <h2># 2. IX 线路 (自备落地) 500G 双向</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>套餐</th>
+              <th>方案</th>
+              <th>价格</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>套餐 A</strong></td>
+              <td>前置G口 + IX + 内网</td>
+              <td><strong>70/月</strong> <span class="status-ok">(长期有位)</span></td>
+            </tr>
+            <tr>
+              <td><strong>套餐 B</strong></td>
+              <td>前置G口 + IX</td>
+              <td><strong>55/月</strong> <span class="status-ok">(长期有位)</span></td>
+            </tr>
+            <tr>
+              <td><strong>套餐 C</strong></td>
+              <td>IX + 内网</td>
+              <td><strong>30/月</strong> <span class="status-ok">(长期有位)</span></td>
+            </tr>
+            <tr>
+              <td><strong>套餐 D</strong></td>
+              <td>仅IX (送阿里200M)</td>
+              <td><strong>15/月</strong> <span class="status">(余5)</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="warning-box">
+        ⚠️ 落地仅允许协议: <code>SS 2022-blake3</code> / <code>vless+enc</code>
+      </div>
+      <p class="extra-note">注：ix通腾讯 华为 阿里 火山 百度等大厂</p>
+    </div>
 
-        <div class="rows">
-          <div class="row" v-for="(row, i) in aRows" :key="`A-row-${i}`">
-            <ProductCard :p="aSection" />
-            <ProductCard v-for="(p, j) in row" :key="`A-${i}-${j}`" :p="p" />
-          </div>
-        </div>
-
-        <div class="divider" />
-
-        <div class="rows">
-          <div class="row" v-for="(row, i) in bRows" :key="`B-row-${i}`">
-            <ProductCard :p="bSection" />
-            <ProductCard v-for="(p, j) in row" :key="`B-${i}-${j}`" :p="p" />
-          </div>
-        </div>
-      </main>
-
-      <aside class="sidebar">
-        <div class="profile-card">
-          <img class="avatar" :src="avatarUrl" :alt="name" />
-          <div class="profile-text">
-            <div class="name">{{ name }}</div>
-            <div class="signature"><span class="typing">{{ typedText }}</span><span class="cursor">|</span></div>
-          </div>
-        </div>
-
-        <a v-for="(l, i) in links" :key="i" class="side-btn" :href="l.url" target="_blank">{{ l.label }}</a>
-      </aside>
-
+    <div class="card policy">
+      <h3>📜 须知 & 政策</h3>
+      <ul>
+        <li><strong>严禁</strong>: 机场 / 车中车 (违者清退不退款)</li>
+        <li><strong>退款</strong>: 跳车、个人问题不退；车主/商家问题按余值退</li>
+        <li><strong>技术</strong>: 提供 TG 全方位支持</li>
+      </ul>
+      <p class="footer-msg">上车即代表同意上述政策</p>
     </div>
   </div>
 </template>
 
-<script setup>
-import { computed, ref, onMounted, onBeforeUnmount } from "vue";
-import { sections } from "./data/products";
-import ProductCard from "./components/ProductCard.vue";
-import { STYLE_SRC_CONFIG } from "./style-src-config";
-
-const { avatarUrl, name, signatures, links } = STYLE_SRC_CONFIG;
-
-const typedText = ref("");
-let sigIndex = 0;
-let charIndex = 0;
-let deleting = false;
-let timer = null;
-
-const loopType = () => {
-  const current = signatures[sigIndex];
-  let delay = 80;
-
-  if (!deleting) {
-    charIndex += 1;
-    typedText.value = current.slice(0, charIndex);
-    if (charIndex >= current.length) {
-      deleting = true;
-      delay = 1200;
-    }
-  } else {
-    charIndex -= 1;
-    typedText.value = current.slice(0, charIndex);
-    delay = 50;
-    if (charIndex <= 0) {
-      deleting = false;
-      sigIndex = (sigIndex + 1) % signatures.length;
-      delay = 300;
-    }
-  }
-
-  timer = setTimeout(loopType, delay);
-};
-
-onMounted(() => loopType());
-onBeforeUnmount(() => timer && clearTimeout(timer));
-
-const aSection = sections.A.find((p) => p.type === "section");
-const bSection = sections.B.find((p) => p.type === "section");
-
-const aItems = sections.A.filter((p) => p.type !== "section");
-const bItems = sections.B.filter((p) => p.type !== "section");
-
-const chunk = (arr, size) => {
-  const res = [];
-  for (let i = 0; i < arr.length; i += size) res.push(arr.slice(i, i + size));
-  return res;
-};
-
-const aRows = computed(() => chunk(aItems, 2));
-const bRows = computed(() => chunk(bItems, 2));
-</script>
-
 <style scoped>
-:global(html, body){
-  min-height:100%;
+.shoplist-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
-:global(body){
-  background:url('https://img.ezov.de/uploads/2026/03/tjp6VCWe6TxH.webp') center/cover no-repeat fixed;
+
+.header {
+  margin-bottom: 30px;
 }
-@media (max-width: 640px){
-  :global(body){
-    background:url('https://img.ezov.de/uploads/2026/03/ts9m2gS7FTgY.webp') center/cover no-repeat scroll;
-  }
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2c3e50;
 }
-.page{max-width:1500px;margin:24px auto;padding:0 16px;}
-.page h1{ text-align:center; margin:0; }
-.title-card{
-  margin:0 auto 18px;
-  max-width:520px;
-  padding:10px 16px;
-  text-align:center;
-  border-radius:14px;
-  background:rgba(0,0,0,.55);
-  border:1px solid rgba(255,255,255,.25);
+
+.card {
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
-}
-.title-card h1{
-  font-size:28px;
-  font-weight:900;
-  color:#fff;
-  letter-spacing:2px;
-  text-shadow:0 2px 10px rgba(0,0,0,.5);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.layout{display:grid;grid-template-columns:minmax(760px, 1fr) 260px;gap:24px;align-items:start;}
-@media (max-width: 980px){
-  .layout{grid-template-columns:1fr;}
-}
-@media (max-width: 640px){
-  .layout{display:flex;flex-direction:column;gap:16px;}
-  .sidebar{order:1;}
-  .main{order:2;}
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-.main{}
-
-.rows{display:flex;flex-direction:column;gap:18px;}
-.row{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:18px;}
-@media (max-width: 980px){
-  .row{grid-template-columns:repeat(2, minmax(0, 1fr));}
-}
-@media (max-width: 640px){
-  .row{grid-template-columns:1fr;}
+.table-wrapper {
+  overflow-x: auto;
 }
 
-.divider{height:1px;background:#e5e7eb;margin:20px 0;}
-.extras{
-  margin:10px 0 20px;
-  padding:12px 16px;
-  border-radius:12px;
-  background:rgba(0,0,0,.55);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.25);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow:0 6px 20px rgba(0,0,0,.25);
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
 }
-.extras h2{font-size:16px;margin:0 0 8px;color:#fff;}
-.extras ul{margin:0;padding-left:18px;color:#fff;}
 
-.sidebar{display:flex;flex-direction:column;gap:12px;position:sticky;top:12px;width:260px;}
-@media (max-width: 640px){
-  .sidebar{position:static;padding:0;background:transparent;backdrop-filter:none;width:100%;max-width:320px;margin:0 auto;}
-  .main{margin-top:0;}
+th, td {
+  text-align: left;
+  padding: 12px 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
-.profile-card{
-  border:1px solid #111827;
-  border-radius:12px;
-  padding:14px;
-  background:#111827;
-  color:#fff;
-  display:flex;
-  gap:12px;
-  align-items:center;
-  width:100%;
-  box-sizing:border-box;
-}
-.avatar{width:64px;height:64px;border-radius:12px;object-fit:cover;}
-.profile-text{flex:1;min-width:0;}
-.profile-text .name{font-size:18px;font-weight:700;margin-bottom:6px;color:#fff;}
-.signature{font-weight:700;font-size:14px;color:#fff;min-height:22px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.cursor{margin-left:2px;animation:blink 1s infinite;}
 
-.side-btn{
-  border:1px solid #111827;
-  border-radius:12px;
-  padding:10px 12px;
-  text-align:center;
-  background:#111827;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-  width:100%;
-  box-sizing:border-box;
+th {
+  color: #888;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
-.side-btn:hover{background:#0b1220;}
 
-@keyframes blink{0%,49%{opacity:1;}50%,100%{opacity:0;}}
+.warning-box {
+  margin-top: 15px;
+  padding: 10px 12px;
+  background: rgba(255, 71, 87, 0.08);
+  border-left: 4px solid #ff4757;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+code {
+  font-family: ui-monospace, monospace;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.status { color: #ff4757; margin-left: 4px; }
+.status-ok { color: #2ed573; margin-left: 4px; }
+.extra-note { font-size: 0.8rem; color: #999; margin-top: 10px; }
+
+.policy h3 { margin-bottom: 12px; }
+.policy ul { padding-left: 18px; margin: 0; }
+.policy li { font-size: 0.9rem; margin-bottom: 6px; }
+.footer-msg { 
+  margin-top: 20px; 
+  font-size: 0.8rem; 
+  color: #bbb; 
+  text-align: center;
+}
 </style>
